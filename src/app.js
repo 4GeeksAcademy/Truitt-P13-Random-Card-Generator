@@ -1,17 +1,16 @@
 /* eslint-disable */
-import "bootstrap";
 import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = () => {
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".card").innerHTML = generateRandomNumber();
-};
+let reset = document.querySelector("#reset");
+reset.addEventListener("click", () => {
+  location.reload();
+});
 
 let generateRandomNumber = () => {
-  let numbers = [
+  const numbers = [
     "A",
     "2",
     "3",
@@ -31,7 +30,27 @@ let generateRandomNumber = () => {
 };
 
 let generateRandomSuit = () => {
-  let suit = ["diamond", "spade", "heart", "club"];
+  let suit = ["Diamonds", "Spades", "Hearts", "Clubs"];
   let indexSuit = Math.floor(Math.random() * suit.length);
   return suit[indexSuit];
 };
+
+function generateCard() {
+  const cardNumber = generateRandomNumber();
+  const cardSuit = generateRandomSuit();
+  let entity =
+    cardSuit === "Diamonds"
+      ? (entity = "&diams;")
+      : (entity = "&" + cardSuit.toLowerCase() + ";");
+
+  let card = document.createElement("div");
+  card.classList.add("card", cardSuit.toLowerCase());
+  card.innerHTML =
+    `<span class="card-suit top"> ${entity}</span>` +
+    `<span class="card-number"> ${cardNumber}</span>` +
+    `<span class="card-suit bot"> ${entity}</span>`;
+
+  document.body.appendChild(card);
+}
+
+generateCard();

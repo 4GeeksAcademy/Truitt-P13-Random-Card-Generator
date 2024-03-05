@@ -1,32 +1,63 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 body {
-  background: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
 }
 
 .card {
   text-align: center;
-  display: inline-block;
   background: white;
-  margin: auto;
+  margin: 20px auto;
   height: 400px;
   width: 250px;
+  font-size: 80px;
   padding: 20px;
-  padding-top: 180px;
+  padding-top: 160px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 20px;
   position: relative;
 }
 
-.top-suit {
+.card.hearts,
+.card.diamonds {
+  color: red;
+}
+
+.card.spades,
+.card.clubs {
+  color: black;
+}
+
+.card-suit.top,
+.card-suit.bot {
   position: absolute;
-  top: 20px;
-  left: 20px;
   font-size: 80px;
 }
 
-.bottom-suit {
-  position: absolute;
-  bottom: 20px;
+.card-suit.top {
+  top: 8px;
+  left: 20px;
+}
+
+.card-suit.bot {
+  bottom: 8px;
   right: 20px;
-  font-size: 80px;
+  transform: rotate(180deg);
+}
+
+.card-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 170px;
+}
+
+#reset {
+  position: absolute;
+  margin-top: 450px;
+  z-index: 1000;
 }
